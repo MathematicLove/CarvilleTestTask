@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  nds-calc:
+    build: .
+    image: nds-calc:latest
+    # тут можно менять
+    entrypoint: [ "python", "cli.py" ]
+    command: [ "1.81", "20" ]
+
+  tests:
+    build: .
+    image: nds-calc:latest
+    entrypoint: [ "python" ]
+    command: [ "-m", "unittest", "discover", "-s", ".", "-p", "tests.py", "-v" ]
